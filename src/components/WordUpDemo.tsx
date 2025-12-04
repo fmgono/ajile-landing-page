@@ -119,13 +119,13 @@ export function WordUpDemo() {
                     initial={{ opacity: 0, x: 50 }}
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: -50 }}
-                    className="relative w-full h-full bg-white rounded-2xl neobrutalism-border-thick neobrutalism-shadow-lg flex flex-col overflow-hidden min-h-[500px]"
+                    className="relative w-full h-full bg-white rounded-2xl neobrutalism-border-thick neobrutalism-shadow-lg flex flex-col overflow-hidden min-h-[600px]"
                   >
-                    {/* Fixed Header: Title & Audio */}
-                    <div className="flex-shrink-0 px-6 py-4 bg-[#FAEDCB] border-b-2 border-black/5 z-10 flex justify-between items-center">
+                    {/* Fixed Header: Title & Audio (Matching LearnPhase.tsx style) */}
+                    <div className="flex-shrink-0 px-6 py-4 bg-[#FAEDCB] border-b-2 border-black/5 z-10 flex justify-between items-center relative">
                         {/* Word Title */}
                         <div className="text-left">
-                            <h3 className="text-4xl lg:text-5xl font-black block">{currentWord.word}</h3>
+                            <h3 className="text-5xl font-black block mb-1">{currentWord.word}</h3>
                             <p className="text-xl text-muted-foreground font-bold">{currentWord.reading}</p>
                         </div>
 
@@ -145,9 +145,10 @@ export function WordUpDemo() {
                     </div>
 
                     {/* Scrollable Body: Content */}
-                    <div className="flex-1 overflow-y-auto px-6 py-6 space-y-6 bg-white">
+                    <div className="flex-1 overflow-y-auto px-6 py-6 space-y-6 bg-white relative">
+                        
                         {/* Image */}
-                        <div className="flex justify-center w-full">
+                        <div className="flex justify-center w-full mb-6">
                             <div className="p-1.5 bg-white border-2 border-black rounded-xl neobrutalism-shadow-sm w-full max-w-md">
                                 <img
                                     src={currentWord.imageUrl}
@@ -158,7 +159,7 @@ export function WordUpDemo() {
                         </div>
 
                         {/* Meaning */}
-                        <div className="bg-white border-2 border-black rounded-xl p-6 neobrutalism-shadow-sm">
+                        <div className="bg-white border-2 border-black rounded-xl p-6 neobrutalism-shadow-sm mb-6">
                             <div className="text-xs font-bold mb-1 uppercase tracking-wider text-gray-500">Meaning</div>
                             <div className="text-2xl font-bold leading-relaxed">{currentWord.meaning}</div>
                         </div>
@@ -171,23 +172,43 @@ export function WordUpDemo() {
                             </div>
                             <div className="space-y-3">
                                 {currentWord.sentences.map((sent, i) => (
-                                    <div key={i} className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                                        <p className="font-bold text-lg mb-1">
-                                            {sent.japanese.split(sent.highlight).map((part, idx, arr) => (
-                                                <span key={idx}>
-                                                    {part}
-                                                    {idx < arr.length - 1 && <span className="text-primary">{sent.highlight}</span>}
-                                                </span>
-                                            ))}
-                                        </p>
-                                        <p className="text-sm text-gray-500">{sent.translation}</p>
+                                    <div key={i} className="bg-white border-2 border-black rounded-xl neobrutalism-shadow-sm p-4 hover:translate-y-[-2px] transition-transform duration-200">
+                                        <div className="flex items-start justify-between gap-3 mb-2">
+                                           <div className="flex-1">
+                                                <div className="text-xl mb-1 font-medium block">
+                                                    {/* Simplified Furigana simulation for demo */}
+                                                    {sent.japanese.split(sent.highlight).map((part, idx, arr) => (
+                                                        <span key={idx}>
+                                                            {part}
+                                                            {idx < arr.length - 1 && (
+                                                                <span className="bg-yellow-100 rounded px-0.5">
+                                                                    {sent.highlight}
+                                                                </span>
+                                                            )}
+                                                        </span>
+                                                    ))}
+                                                </div>
+                                                <div className="text-sm text-muted-foreground italic mb-1">
+                                                    {sent.translation}
+                                                </div>
+                                           </div>
+                                           {/* Play button for sentence */}
+                                            <div className="flex flex-col items-center gap-1">
+                                                <button
+                                                    className="neobrutalism-border h-10 w-10 rounded-full flex items-center justify-center p-0 hover:bg-gray-50 transition-colors bg-white"
+                                                    onClick={() => {}} // No-op for demo
+                                                >
+                                                    <Play className="h-4 w-4 ml-0.5" />
+                                                </button>
+                                            </div>
+                                        </div>
                                     </div>
                                 ))}
                             </div>
                         </div>
                     </div>
 
-                    {/* Fixed Footer: Review Buttons */}
+                    {/* Fixed Footer: Review Buttons (Matching LearnPhase.tsx style) */}
                     <div className="flex-shrink-0 p-4 border-t-2 border-black/5 bg-[#FAEDCB]">
                         <div className="text-xs font-bold mb-3 text-center text-gray-500 uppercase tracking-wider">
                             When do you want to review it again?

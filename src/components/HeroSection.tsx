@@ -175,49 +175,115 @@ export function HeroSection() {
                          animate={{ opacity: 1, x: 0 }}
                          exit={{ opacity: 0, x: -20 }}
                          transition={{ duration: 0.3 }}
-                         className="flex flex-col gap-3 h-full"
+                         className="flex flex-col gap-1.5 h-full"
                        >
-                         {/* Word Up Header */}
-                         <div className="flex items-center justify-between">
-                            <div className="text-[10px] font-black">My Decks</div>
-                            <div className="h-5 w-16 bg-[#8B80F9] rounded border border-black text-white flex items-center justify-center text-[8px] font-bold">+ Import</div>
+                         {/* Header - matches WordProgressCard header */}
+                         <div className="flex items-center gap-1 pb-1 border-b border-black/10">
+                            <svg className="w-3 h-3 text-[#8B80F9]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                               <path d="M23 6l-9.5 9.5-5-5L1 18" />
+                               <path d="M17 6h6v6" />
+                            </svg>
+                            <div className="text-[9px] font-black">Learning Progress</div>
                          </div>
                          
-                         {/* Deck Cards */}
-                         <div className="space-y-2 flex-1">
-                            <div className="bg-white rounded-lg border-2 border-black p-2 neobrutalism-shadow-sm">
-                               <div className="flex items-center justify-between">
-                                  <div>
-                                     <div className="text-[10px] font-bold">Core 2000</div>
-                                     <div className="text-[8px] text-gray-500">500 words • 120 due</div>
-                                  </div>
-                                  <div className="w-8 h-8 bg-pastel-peach rounded border border-black flex items-center justify-center text-xs">📚</div>
+                         {/* Words Due Today - Full Width (peach bg like real app) */}
+                         <div className="bg-[#FFD8C4] rounded-lg border-2 border-black p-2 flex items-center justify-between">
+                            <div className="flex items-center gap-2">
+                               <div className="bg-white p-1 rounded-full border border-black">
+                                  <svg className="w-3 h-3 text-red-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                     <circle cx="12" cy="12" r="10" />
+                                     <line x1="12" y1="8" x2="12" y2="12" />
+                                     <line x1="12" y1="16" x2="12.01" y2="16" />
+                                  </svg>
+                               </div>
+                               <div>
+                                  <div className="text-[6px] font-bold text-black/60 uppercase">Words Due Today</div>
+                                  <div className="text-[16px] font-black text-red-600 leading-none">47</div>
                                </div>
                             </div>
-                            <div className="bg-white rounded-lg border-2 border-black p-2 neobrutalism-shadow-sm">
-                               <div className="flex items-center justify-between">
-                                  <div>
-                                     <div className="text-[10px] font-bold">JLPT N5</div>
-                                     <div className="text-[8px] text-gray-500">800 words • 45 due</div>
-                                  </div>
-                                  <div className="w-8 h-8 bg-pastel-blue rounded border border-black flex items-center justify-center text-xs">🎯</div>
-                               </div>
-                            </div>
-                            <div className="bg-white rounded-lg border-2 border-black p-2 neobrutalism-shadow-sm">
-                               <div className="flex items-center justify-between">
-                                  <div>
-                                     <div className="text-[10px] font-bold">Anime Vocab</div>
-                                     <div className="text-[8px] text-gray-500">200 words • 30 due</div>
-                                  </div>
-                                  <div className="w-8 h-8 bg-pastel-yellow rounded border border-black flex items-center justify-center text-xs">🎬</div>
-                               </div>
+                            <div className="bg-white px-2 py-1 rounded border-2 border-black text-[7px] font-bold flex items-center gap-1">
+                               <svg className="w-2.5 h-2.5 fill-current" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                               Review
                             </div>
                          </div>
 
-                         {/* Bottom Action */}
-                         <div className="flex gap-2">
-                            <div className="flex-1 h-8 bg-[#8B80F9] rounded-md border-2 border-black flex items-center justify-center">
-                               <span className="text-white text-[10px] font-bold">Learn Now (195 due)</span>
+                         {/* Stats Grid - 3 columns like real app */}
+                         <div className="grid grid-cols-3 gap-1 flex-1">
+                            {/* Total Words (white) */}
+                            <div className="bg-white rounded-lg border-2 border-black p-1.5">
+                               <div className="flex items-center gap-0.5 mb-0.5">
+                                  <svg className="w-2 h-2 text-gray-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                     <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                                     <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+                                  </svg>
+                                  <div className="text-[5px] font-bold text-gray-500 uppercase">Total</div>
+                               </div>
+                               <div className="text-[14px] font-black leading-none">2,450</div>
+                            </div>
+
+                            {/* Learned (mint #C9E4DE) */}
+                            <div className="bg-[#C9E4DE] rounded-lg border-2 border-black p-1.5">
+                               <div className="flex items-center gap-0.5 mb-0.5">
+                                  <svg className="w-2 h-2 text-green-800" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                     <circle cx="12" cy="12" r="10" />
+                                     <circle cx="12" cy="12" r="6" />
+                                     <circle cx="12" cy="12" r="2" />
+                                  </svg>
+                                  <div className="text-[5px] font-bold text-green-800/70 uppercase">Learned</div>
+                               </div>
+                               <div className="text-[14px] font-black text-green-900 leading-none">1,247</div>
+                               <div className="text-[5px] font-bold text-green-800/70">51%</div>
+                            </div>
+
+                            {/* Unlearned (blue #C6DEF1) */}
+                            <div className="bg-[#C6DEF1] rounded-lg border-2 border-black p-1.5">
+                               <div className="flex items-center gap-0.5 mb-0.5">
+                                  <svg className="w-2 h-2 text-blue-800" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                     <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                                     <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+                                  </svg>
+                                  <div className="text-[5px] font-bold text-blue-800/70 uppercase">Unlearned</div>
+                               </div>
+                               <div className="text-[14px] font-black text-blue-900 leading-none">1,203</div>
+                            </div>
+
+                            {/* Mastered (yellow #FAEDCB) */}
+                            <div className="bg-[#FAEDCB] rounded-lg border-2 border-black p-1.5">
+                               <div className="flex items-center gap-0.5 mb-0.5">
+                                  <svg className="w-2 h-2 text-yellow-800" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                     <circle cx="12" cy="8" r="7" />
+                                     <path d="M8.21 13.89L7 23l5-3 5 3-1.21-9.12" />
+                                  </svg>
+                                  <div className="text-[5px] font-bold text-yellow-800/70 uppercase">Mastered</div>
+                               </div>
+                               <div className="text-[14px] font-black text-yellow-900 leading-none">312</div>
+                               <div className="text-[5px] font-bold text-yellow-800/70">13%</div>
+                            </div>
+
+                            {/* Current Streak (white + flame) */}
+                            <div className="bg-white rounded-lg border-2 border-black p-1.5">
+                               <div className="flex items-center gap-0.5 mb-0.5">
+                                  <svg className="w-2 h-2 text-orange-500" viewBox="0 0 24 24" fill="currentColor">
+                                     <path d="M12 23c-3.866 0-7-3.134-7-7 0-2.5 1.5-4.5 3-6 0 0 .5 1.5 2 2.5 0-3.5 3-6.5 5-8 0 0 1 2 1 4 1.5-1 2-3 2-3 1.5 2 2 4 2 6.5 0 3.866-3.134 7-7 7h-1z"/>
+                                  </svg>
+                                  <div className="text-[5px] font-bold text-gray-500 uppercase">Streak</div>
+                               </div>
+                               <div className="text-[14px] font-black leading-none">12</div>
+                               <div className="text-[5px] font-bold text-gray-500">days</div>
+                            </div>
+
+                            {/* Reviewed Today (white) */}
+                            <div className="bg-white rounded-lg border-2 border-black p-1.5">
+                               <div className="flex items-center gap-0.5 mb-0.5">
+                                  <svg className="w-2 h-2 text-gray-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                     <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                                     <line x1="16" y1="2" x2="16" y2="6" />
+                                     <line x1="8" y1="2" x2="8" y2="6" />
+                                     <line x1="3" y1="10" x2="21" y2="10" />
+                                  </svg>
+                                  <div className="text-[5px] font-bold text-gray-500 uppercase">Today</div>
+                               </div>
+                               <div className="text-[14px] font-black leading-none">23</div>
                             </div>
                          </div>
                        </motion.div>

@@ -1,0 +1,121 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Calm Colorful Palette */
+    /* Background: #FDFBF7 (Cream/Off-white) */
+    --background: 40 20% 98%;
+    /* Foreground: #1a1a1a (Soft Black for text) */
+    --foreground: 0 0% 10%;
+
+    /* Card: White */
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 10%;
+
+    /* Popover: White */
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 10%;
+
+    /* Primary: #8B80F9 (Bold Soft Purple from reference) */
+    --primary: 245 90% 74%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary: #C9E4DE (Mint) */
+    --secondary: 166 35% 84%;
+    --secondary-foreground: 0 0% 10%;
+
+    /* Muted: #F0F0F0 (Light Gray) */
+    --muted: 0 0% 94%;
+    --muted-foreground: 0 0% 40%;
+
+    /* Accent: #FFD8C4 (Peach) */
+    --accent: 20 100% 88%;
+    --accent-foreground: 0 0% 10%;
+
+    /* Destructive: #FF6B6B (Soft Red) */
+    --destructive: 0 100% 71%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Border: Black (Neobrutalism key) */
+    --border: 0 0% 10%;
+    --input: 0 0% 10%;
+    --ring: 245 90% 74%;
+
+    --radius: 0.75rem; /* Slightly more rounded for friendly feel */
+
+    /* Chart colors */
+    --chart-1: 245 90% 74%; /* Purple */
+    --chart-2: 166 35% 84%; /* Mint */
+    --chart-3: 20 100% 88%; /* Peach */
+    --chart-4: 45 80% 89%;  /* Yellow */
+    --chart-5: 200 60% 86%; /* Blue */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Neobrutalism styles */
+@layer utilities {
+  .neobrutalism-shadow {
+    box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1);
+  }
+  
+  .neobrutalism-shadow-sm {
+    box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 1);
+  }
+  
+  .neobrutalism-shadow-lg {
+    box-shadow: 6px 6px 0px 0px rgba(0, 0, 0, 1);
+  }
+  
+  .neobrutalism-border {
+    border: 2px solid rgba(0, 0, 0, 1);
+  }
+  
+  .neobrutalism-border-thick {
+    border: 4px solid rgba(0, 0, 0, 1);
+  }
+
+  /* Colorful Variants */
+  .neobrutalism-purple {
+    @apply bg-pastel-purple border-black text-black;
+  }
+  
+  .neobrutalism-peach {
+    @apply bg-pastel-peach border-black text-black;
+  }
+  
+  .neobrutalism-mint {
+    @apply bg-pastel-mint border-black text-black;
+  }
+  
+  .neobrutalism-yellow {
+    @apply bg-pastel-yellow border-black text-black;
+  }
+
+  .neobrutalism-blue {
+    @apply bg-pastel-blue border-black text-black;
+  }
+
+  /* Gradient Text Utility */
+  .text-gradient-purple {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-blue-500;
+  }
+
+  /* 3D Utilities */
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+}

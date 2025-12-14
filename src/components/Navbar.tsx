@@ -52,6 +52,12 @@ export function Navbar({ currentView, onNavigate }: NavbarProps) {
           >
             Roadmap
           </button>
+          <button 
+            onClick={() => onNavigate("faq")}
+            className={`text-sm font-bold transition-colors ${currentView === "faq" ? "text-primary" : "text-muted-foreground hover:text-black"}`}
+          >
+            FAQ
+          </button>
           {/* <a 
             href="https://github.com/fmgono/ajile" 
             target="_blank" 
@@ -102,6 +108,15 @@ export function Navbar({ currentView, onNavigate }: NavbarProps) {
                 className={`text-left font-bold py-2 ${currentView === "roadmap" ? "text-primary" : "text-muted-foreground hover:text-black"}`}
               >
                 Roadmap
+              </button>
+              <button 
+                onClick={() => {
+                  onNavigate("faq");
+                  setIsMobileMenuOpen(false);
+                }}
+                className={`text-left font-bold py-2 ${currentView === "faq" ? "text-primary" : "text-muted-foreground hover:text-black"}`}
+              >
+                FAQ
               </button>
               <button 
                 onClick={() => {

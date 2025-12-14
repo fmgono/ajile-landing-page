@@ -26,6 +26,12 @@ export function Footer({ onNavigate }: FooterProps) {
                 Roadmap
               </button>
               <button 
+                onClick={() => onNavigate("faq")}
+                className="text-muted-foreground hover:text-black transition-colors"
+              >
+                FAQ
+              </button>
+              <button 
                 onClick={() => onNavigate("privacy")}
                 className="text-muted-foreground hover:text-black transition-colors"
               >

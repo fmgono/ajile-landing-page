@@ -10,8 +10,9 @@ import { Navbar } from "./components/Navbar";
 import { RoadmapPage } from "./components/RoadmapPage";
 import { PrivacyPage } from "./components/PrivacyPage";
 import { TermsPage } from "./components/TermsPage";
+import { FAQPage } from "./components/FAQPage";
 
-export type View = "home" | "roadmap" | "privacy" | "terms";
+export type View = "home" | "roadmap" | "privacy" | "terms" | "faq";
 
 interface AppProps {
   initialView?: View;
@@ -27,6 +28,7 @@ function App({ initialView }: AppProps = {}) {
       if (path.startsWith('/roadmap')) return 'roadmap';
       if (path.startsWith('/privacy')) return 'privacy';
       if (path.startsWith('/terms')) return 'terms';
+      if (path.startsWith('/faq')) return 'faq';
     }
     return 'home';
   };
@@ -77,6 +79,8 @@ function App({ initialView }: AppProps = {}) {
       {currentView === "privacy" && <PrivacyPage />}
 
       {currentView === "terms" && <TermsPage />}
+
+      {currentView === "faq" && <FAQPage />}
       
       <Footer onNavigate={handleNavigate} />
     </div>

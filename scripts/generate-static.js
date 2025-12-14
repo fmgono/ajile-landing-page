@@ -26,6 +26,11 @@ const routes = {
     file: 'terms/index.html',
     title: 'Terms of Service - Ajile',
     description: 'By using Ajile, you agree to these terms. I keep them simple because nobody likes reading legal jargon.'
+  },
+  '/faq': {
+    file: 'faq/index.html',
+    title: 'FAQ - Ajile',
+    description: 'Having trouble installing or opening Ajile? Find solutions for common macOS Gatekeeper warnings, Windows SmartScreen, and more.'
   }
 }
 

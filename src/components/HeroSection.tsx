@@ -130,39 +130,93 @@ export function HeroSection() {
                          animate={{ opacity: 1, x: 0 }}
                          exit={{ opacity: 0, x: -20 }}
                          transition={{ duration: 0.3 }}
-                         className="flex flex-col gap-3 h-full"
+                         className="flex flex-col gap-2 h-full"
                        >
-                         {/* Kana Content Header */}
-                         <div className="flex items-center justify-between">
-                            <div className="h-5 w-24 bg-gray-200 rounded"></div>
-                            <div className="h-5 w-16 bg-pastel-mint rounded border border-black/20 flex items-center justify-center text-[8px] font-bold">Hiragana</div>
-                         </div>
-                         
-                         {/* Kana Grid */}
-                         <div className="grid grid-cols-5 gap-1.5 flex-1">
-                            {[...Array(15)].map((_, i) => (
-                               <div 
-                                  key={i} 
-                                  className={`rounded border border-black/10 flex items-center justify-center text-xs font-bold ${i === 0 ? 'bg-pastel-purple' : i === 5 ? 'bg-pastel-mint' : 'bg-white'}`}
-                               >
-                                  {i === 0 && 'あ'}
-                                  {i === 1 && 'い'}
-                                  {i === 2 && 'う'}
-                                  {i === 3 && 'え'}
-                                  {i === 4 && 'お'}
-                                  {i === 5 && 'か'}
-                                  {i === 6 && 'き'}
-                                  {i === 7 && 'く'}
-                                  {i === 8 && 'け'}
-                                  {i === 9 && 'こ'}
-                               </div>
-                            ))}
+                         {/* Kana Content Header - New Style */}
+                         <div className="flex items-center justify-between gap-2 bg-white/50 p-1.5 rounded-lg border border-black/10">
+                            <div className="flex items-center gap-1.5">
+                                <div className="p-1 bg-white rounded border border-black/10">
+                                    <svg className="w-3 h-3 text-black" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                        <path d="M22 10v6M2 10v6M22 19a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3h14a3 3 0 0 1 3 3Z" />
+                                    </svg>
+                                </div>
+                                <div className="text-[9px] font-black leading-tight">
+                                    Kana Mastery
+                                </div>
+                            </div>
+                            <button className="px-2 py-0.5 bg-primary text-white text-[8px] font-bold rounded border border-black shadow-[1px_1px_0_0_rgba(0,0,0,1)]">
+                                Practice
+                            </button>
                          </div>
 
-                         {/* Bottom Action */}
-                         <div className="flex gap-2">
-                            <div className="flex-1 h-8 bg-[#8B80F9] rounded-md border-2 border-black flex items-center justify-center">
-                               <span className="text-white text-[10px] font-bold">Start Practice</span>
+                         {/* Mock Tabs */}
+                         <div className="flex items-center justify-between px-1">
+                             <div className="flex gap-1">
+                                 <div className="px-2 py-0.5 bg-white border border-black rounded text-[7px] font-bold shadow-[1px_1px_0_0_rgba(0,0,0,1)]">
+                                     Lessons
+                                 </div>
+                                 <div className="px-2 py-0.5 text-black/50 text-[7px] font-bold">
+                                     Reference
+                                 </div>
+                             </div>
+                             <div className="flex bg-black/5 p-0.5 rounded gap-1">
+                                <div className="px-1.5 bg-white rounded text-[6px] font-bold shadow-sm">あ</div>
+                                <div className="px-1.5 text-black/50 text-[6px] font-bold">ア</div>
+                             </div>
+                         </div>
+                         
+                         {/* Kana Cards Grid (Lessons View) */}
+                         <div className="grid grid-cols-2 gap-2 flex-1 overflow-hidden content-start">
+                            {/* Card 1: Vowels */}
+                            <div className="bg-green-50 rounded border border-black p-2 relative shadow-[2px_2px_0_0_rgba(0,0,0,1)]">
+                                <div className="flex justify-between items-center mb-1">
+                                    <span className="text-[8px] font-black">Vowels</span>
+                                    <svg className="w-2 h-2 text-green-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M20 6L9 17l-5-5"/></svg>
+                                </div>
+                                <div className="flex gap-0.5 mb-1.5 justify-between">
+                                    <span className="text-[10px] font-bold text-yellow-600">あ</span>
+                                    <span className="text-[10px] font-bold text-yellow-600">い</span>
+                                    <span className="text-[10px] font-bold text-yellow-600">う</span>
+                                    <span className="text-[10px] font-bold text-yellow-600">え</span>
+                                    <span className="text-[10px] font-bold text-yellow-600">お</span>
+                                </div>
+                                <div className="w-full bg-white border border-black rounded flex items-center justify-center py-0.5 text-[6px] font-bold">
+                                    Review
+                                </div>
+                            </div>
+
+                            {/* Card 2: K-Column */}
+                            <div className="bg-white rounded border border-black p-2 relative shadow-[2px_2px_0_0_rgba(0,0,0,1)]">
+                                <div className="flex justify-between items-center mb-1">
+                                    <span className="text-[8px] font-black">"K" Column</span>
+                                </div>
+                                <div className="flex gap-0.5 mb-1.5 justify-between">
+                                    <span className="text-[10px] font-bold text-indigo-500">か</span>
+                                    <span className="text-[10px] font-bold text-indigo-500">き</span>
+                                    <span className="text-[10px] font-bold text-indigo-500">く</span>
+                                    <span className="text-[10px] font-bold text-gray-300">け</span>
+                                    <span className="text-[10px] font-bold text-gray-300">こ</span>
+                                </div>
+                                <div className="w-full bg-black text-white border border-black rounded flex items-center justify-center py-0.5 text-[6px] font-bold">
+                                    Start
+                                </div>
+                            </div>
+
+                             {/* Card 3: S-Column */}
+                             <div className="bg-white rounded border border-black p-2 relative shadow-[2px_2px_0_0_rgba(0,0,0,1)] opacity-50">
+                                <div className="flex justify-between items-center mb-1">
+                                    <span className="text-[8px] font-black">"S" Column</span>
+                                </div>
+                                <div className="flex gap-0.5 mb-1.5 justify-between">
+                                    <span className="text-[10px] font-bold text-gray-300">さ</span>
+                                    <span className="text-[10px] font-bold text-gray-300">し</span>
+                                    <span className="text-[10px] font-bold text-gray-300">す</span>
+                                    <span className="text-[10px] font-bold text-gray-300">せ</span>
+                                    <span className="text-[10px] font-bold text-gray-300">そ</span>
+                                </div>
+                                <div className="w-full bg-gray-100 border border-black/20 rounded flex items-center justify-center py-0.5 text-[6px] font-bold">
+                                    Locked
+                                </div>
                             </div>
                          </div>
                        </motion.div>

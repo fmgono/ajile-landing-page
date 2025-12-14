@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Check, X, RotateCcw, Trophy, ArrowRight, XCircle } from "lucide-react";
+import { Check, CheckCircle2, RotateCcw, Trophy, ArrowRight, XCircle, GraduationCap, Dumbbell, Layers, Grid, PlayCircle, Star, Sparkles, Volume2, HelpCircle } from "lucide-react";
 import ConfettiGenerator from "confetti-js";
 
 // Types
@@ -143,13 +143,13 @@ export function KanaFeatureDemo() {
                   <div className="w-3 h-3 rounded-full bg-green-400 border border-black"></div>
               </div>
               <div className="text-sm font-medium">
-                 {quizState === "quiz" ? `Question ${currentQuestionIndex + 1} / ${SAMPLE_QUESTIONS.length}` : "Kana Drill"}
+                 {quizState === "quiz" ? `Question ${currentQuestionIndex + 1} / ${SAMPLE_QUESTIONS.length}` : "Kana Mastery"}
               </div>
               <div className="w-8"></div> {/* Spacer for centering */}
             </div>
 
             {/* Content Area */}
-            <div className="flex-1 flex flex-col items-center justify-center relative w-full">
+            <div className="flex-1 flex flex-col relative w-full bg-background/50">
               
               <AnimatePresence mode="wait">
                 {quizState === "start" && (
@@ -158,19 +158,129 @@ export function KanaFeatureDemo() {
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.9 }}
-                    className="text-center space-y-6 p-8"
+                    className="flex flex-col h-full p-4 overflow-hidden"
                   >
-                    <div className="w-24 h-24 bg-pastel-purple rounded-2xl neobrutalism-border flex items-center justify-center mx-auto mb-6 rotate-3">
-                      <span className="text-5xl font-black">あ</span>
+                    {/* Hero Header */}
+                    <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white p-6 rounded-xl neobrutalism-border neobrutalism-shadow mb-6">
+                      <div className="space-y-1">
+                        <h1 className="text-2xl font-black tracking-tight flex items-center gap-2">
+                          <GraduationCap className="h-6 w-6" />
+                          Kana Mastery
+                          <button className="ml-1 rounded-full text-muted-foreground hover:text-primary">
+                            <HelpCircle className="h-5 w-5" />
+                          </button>
+                        </h1>
+                        <p className="text-muted-foreground text-sm max-w-sm leading-tight">
+                          Master Hiragana and Katakana through interactive lessons.
+                        </p>
+                      </div>
+                      <button 
+                        onClick={() => setQuizState("quiz")}
+                        className="flex items-center gap-2 px-6 py-3 bg-primary text-white font-bold rounded-lg neobrutalism-border neobrutalism-shadow hover:translate-y-0.5 hover:shadow-none transition-all"
+                      >
+                        <Dumbbell className="h-4 w-4" />
+                        Start Practice
+                      </button>
                     </div>
-                    <h3 className="text-2xl font-black">Ready to practice?</h3>
-                    <p className="text-muted-foreground">5 quick questions to test your skills.</p>
-                    <button 
-                      onClick={() => setQuizState("quiz")}
-                      className="px-8 py-3 bg-primary text-white font-bold text-lg rounded-xl neobrutalism-border neobrutalism-shadow hover:translate-y-1 hover:shadow-none transition-all active:translate-y-1 active:shadow-none"
-                    >
-                      Start Quiz
-                    </button>
+
+                    {/* Navigation Controls */}
+                    <div className="flex items-center justify-between gap-4 mb-6">
+                        {/* View Toggle */}
+                        <div className="flex gap-1 bg-gray-100 p-1 rounded-lg border-2 border-transparent">
+                            <button className="flex items-center gap-1.5 px-3 py-1.5 bg-white rounded-md text-xs font-bold shadow-sm">
+                                <Layers className="h-3 w-3" />
+                                Lessons
+                            </button>
+                            <button className="flex items-center gap-1.5 px-3 py-1.5 text-muted-foreground rounded-md text-xs font-bold hover:bg-white/50">
+                                <Grid className="h-3 w-3" />
+                                Reference
+                            </button>
+                        </div>
+
+                        {/* Kana Type Toggle */}
+                        <div className="flex gap-1 bg-gray-100/50 p-1 rounded-lg neobrutalism-border">
+                            <button className="px-4 py-1.5 bg-white rounded-md text-xs font-bold shadow-sm">
+                                Hiragana
+                            </button>
+                            <button className="px-4 py-1.5 text-muted-foreground rounded-md text-xs font-bold hover:bg-white/50">
+                                Katakana
+                            </button>
+                        </div>
+                    </div>
+
+                    {/* Lessons Grid Mock */}
+                    <div className="grid grid-cols-1 gap-4 overflow-y-auto pb-4">
+                        {/* Row 1: Vowels */}
+                        <div className="bg-green-50 rounded-lg neobrutalism-border p-4 relative overflow-hidden group hover:translate-y-[-2px] hover:neobrutalism-shadow transition-all duration-300">
+                             <div className="flex justify-between items-start mb-3">
+                                <h3 className="text-lg font-black">Vowels (Base)</h3>
+                                <CheckCircle2 className="h-5 w-5 text-green-500" />
+                             </div>
+                             <div className="flex gap-2 mb-3 text-2xl font-bold">
+                                <span className="text-[#FFD700] drop-shadow-[0_0_2px_rgba(255,215,0,0.5)]">あ</span>
+                                <span className="text-[#FFD700] drop-shadow-[0_0_2px_rgba(255,215,0,0.5)]">い</span>
+                                <span className="text-[#FFD700] drop-shadow-[0_0_2px_rgba(255,215,0,0.5)]">う</span>
+                                <span className="text-[#FFD700] drop-shadow-[0_0_2px_rgba(255,215,0,0.5)]">え</span>
+                                <span className="text-[#FFD700] drop-shadow-[0_0_2px_rgba(255,215,0,0.5)]">お</span>
+                             </div>
+                             <div className="flex gap-2 mb-3">
+                                <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-[#FFD700]/20 text-[#B8860B] text-[10px] font-bold rounded-full border border-[#FFD700]/30">
+                                    <Star className="h-2 w-2" /> 5 Mastered
+                                </span>
+                             </div>
+                             <div className="space-y-3">
+                                <div className="space-y-1">
+                                    <div className="flex justify-between text-[10px] font-bold text-muted-foreground uppercase">
+                                        <span>Mastery</span>
+                                        <span>100%</span>
+                                    </div>
+                                    <div className="h-1.5 bg-gray-200 rounded-full overflow-hidden">
+                                        <div className="h-full bg-primary w-full" />
+                                    </div>
+                                </div>
+                                <button onClick={() => setQuizState("quiz")} className="w-full py-2 bg-white border-2 border-black rounded-md text-xs font-bold hover:bg-primary hover:text-white transition-colors flex items-center justify-center gap-2">
+                                    <RotateCcw className="h-3 w-3" /> Review Lesson
+                                </button>
+                             </div>
+                        </div>
+
+                        {/* Row 2: K-Column */}
+                        <div className="bg-white rounded-lg neobrutalism-border p-4 relative overflow-hidden group hover:translate-y-[-2px] hover:neobrutalism-shadow transition-all duration-300">
+                             <div className="flex justify-between items-start mb-3">
+                                <h3 className="text-lg font-black">The "K" Column</h3>
+                             </div>
+                             <div className="flex gap-2 mb-3 text-2xl font-bold">
+                                <span className="text-[#8B80F9]">か</span>
+                                <span className="text-[#8B80F9]">き</span>
+                                <span className="text-[#8B80F9]">く</span>
+                                <span className="text-muted-foreground/30">け</span>
+                                <span className="text-muted-foreground/30">こ</span>
+                             </div>
+                             <div className="flex gap-2 mb-3">
+                                <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-[#8B80F9]/20 text-[#8B80F9] text-[10px] font-bold rounded-full border border-[#8B80F9]/30">
+                                    <Sparkles className="h-2 w-2" /> 3 Learning
+                                </span>
+                                <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-gray-100 text-gray-500 text-[10px] font-bold rounded-full">
+                                    2 New
+                                </span>
+                             </div>
+                             <div className="space-y-3">
+                                <div className="space-y-1">
+                                    <div className="flex justify-between text-[10px] font-bold text-muted-foreground uppercase">
+                                        <span>Mastery</span>
+                                        <span>30%</span>
+                                    </div>
+                                    <div className="h-1.5 bg-gray-200 rounded-full overflow-hidden">
+                                        <div className="h-full bg-primary w-[30%]" />
+                                    </div>
+                                </div>
+                                <button onClick={() => setQuizState("quiz")} className="w-full py-2 bg-black text-white border-2 border-black rounded-md text-xs font-bold hover:bg-primary hover:border-black transition-colors flex items-center justify-center gap-2">
+                                    <PlayCircle className="h-3 w-3" /> Continue Lesson
+                                </button>
+                             </div>
+                        </div>
+                    </div>
+
                   </motion.div>
                 )}
 

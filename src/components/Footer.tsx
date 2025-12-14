@@ -6,7 +6,7 @@ export function Footer() {
           <img src="/logo.svg" alt="Ajile Logo" className="w-10 h-10 rounded-lg border-2 border-black shadow-[2px_2px_0_0_rgba(0,0,0,1)]" />
           <div>
             <h4 className="text-2xl font-black">Ajile</h4>
-            <p className="text-muted-foreground text-sm">Built with ❤️ by a fellow Japanese learner. © 2025</p>
+            <p className="text-muted-foreground text-sm">Built with ❤️ by <a href="https://fmgono.dev" target="_blank"  className="text-primary hover:underline">Fathan Margono</a> . © 2025</p>
           </div>
         </div>
         

@@ -5,12 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "node server.js",
-    "build": "tsc -b && vite build --outDir dist/client && vite build --ssr src/entry-cloudflare.tsx --outDir dist/client",
-    "build:local": "tsc -b && vite build --outDir dist/client && vite build --ssr src/entry-server.tsx --outDir dist/server",
+    "build": "tsc -b && vite build --outDir dist/client && vite build --ssr src/entry-server.tsx --outDir dist/server",
+    "build:cf": "tsc -b && vite build --outDir dist/client",
     "lint": "eslint .",
     "preview": "NODE_ENV=production node server.js",
-    "pages:dev": "npm run build && wrangler pages dev dist/client --compatibility-date=2024-01-01",
-    "pages:deploy": "npm run build && wrangler pages deploy dist/client"
+    "pages:dev": "wrangler pages dev dist/client --compatibility-date=2024-01-01",
+    "pages:deploy": "npm run build:cf && wrangler pages deploy dist/client"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",
@@ -45,6 +45,6 @@
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.46.4",
     "vite": "^7.2.4",
-    "wrangler": "^3.99.0"
+    "wrangler": "^4.54.0"
   }
 }

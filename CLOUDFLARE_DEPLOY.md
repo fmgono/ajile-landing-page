@@ -1,82 +1,72 @@
-# Cloudflare Pages SSR Deployment
+# Cloudflare Pages Deployment Guide
 
-## How It Works
+## Dashboard Settings
 
-This project uses **Server-Side Rendering (SSR)** on Cloudflare Pages:
-
-1. `vite build` creates the client-side bundle (`assets/`, `index.html`)
-2. `vite build --ssr` creates `_worker.js` which:
-   - Renders React components server-side using `renderToString`
-   - Injects dynamic Open Graph meta tags
-   - Returns fully rendered HTML
-
-## Cloudflare Dashboard Settings
+In your Cloudflare Pages dashboard, configure:
 
 | Setting | Value |
 |---------|-------|
-| **Framework preset** | None |
-| **Build command** | `npm run build` or `bun run build` |
+| **Build command** | `npm run build:cf` |
 | **Build output directory** | `dist/client` |
+| **Root directory** | (leave empty) |
+
+## How It Works
+
+1. **Client Build**: Vite builds React app → `dist/client/`
+2. **Static Assets**: Cloudflare Pages serves JS, CSS, images directly
+3. **Functions**: `functions/[[path]].ts` handles all HTML routes:
+   - Fetches `index.html` from static assets
+   - Injects dynamic Open Graph meta tags based on the route
+   - Returns the modified HTML
 
 ## Project Structure
 
 ```
-dist/client/
-├── _worker.js          # SSR worker (handles all HTML requests)
-├── index.html          # HTML template
-├── assets/
-│   ├── index-xxx.js    # Client-side React bundle
-│   └── index-xxx.css   # Styles
-├── logo.svg
-└── 32x32.png
+├── functions/
+│   └── [[path]].ts      # Catch-all function for dynamic OG tags
+├── dist/
+│   └── client/          # Built static assets (served by CF Pages)
+├── src/                  # React source code
+├── wrangler.toml        # Cloudflare config
+└── package.json
 ```
-
-## SSR Flow
-
-1. User requests `/roadmap`
-2. Cloudflare runs `_worker.js`
-3. Worker renders `<App initialView="roadmap" />` to HTML string
-4. Worker injects dynamic meta tags for `/roadmap`
-5. Worker returns complete HTML with pre-rendered content
-6. Client hydrates with React
 
 ## Local Development
 
-### Node.js SSR (Express)
 ```bash
+# Standard dev (Express server)
 npm run dev
-```
 
-### Cloudflare Workers (Wrangler)
-```bash
-npm run build
+# Test Cloudflare Pages locally (after build)
+npm run build:cf
 npm run pages:dev
 ```
 
-## Deployment
+## Deploy
 
-### Automatic (GitHub integration)
-Push to main branch → Cloudflare auto-builds and deploys
+### Option 1: Git Integration (Recommended)
+1. Connect your repo to Cloudflare Pages
+2. Set build command: `npm run build:cf`
+3. Set output directory: `dist/client`
+4. Deploy!
 
-### Manual
+### Option 2: Wrangler CLI
 ```bash
 npm run pages:deploy
 ```
 
-## Dynamic Meta Tags
+## Routes Handled
 
-Each route gets unique SEO meta tags:
-
-| Route | Title |
-|-------|-------|
-| `/` | Ajile - Master Japanese through Immersion |
-| `/roadmap` | Roadmap - Ajile |
-| `/privacy` | Privacy Policy - Ajile |
-| `/terms` | Terms of Service - Ajile |
+| Route | Dynamic Title | Dynamic Description |
+|-------|---------------|---------------------|
+| `/` | Ajile - Master Japanese through Immersion | The Japanese learning app I wish I had... |
+| `/roadmap` | Roadmap - Ajile | See what's coming next... |
+| `/privacy` | Privacy Policy - Ajile | Your data belongs to you... |
+| `/terms` | Terms of Service - Ajile | By using Ajile, you agree... |
 
 ## Notes
 
-- Uses Cloudflare's "Advanced Mode" (`_worker.js`)
-- SSR code is bundled by Vite with `target: 'webworker'`
-- All dependencies are bundled (no Node.js runtime)
-- Static assets served directly from Cloudflare CDN
+- Static assets (`.js`, `.css`, `.svg`, `.png`) bypass the function
+- The function only modifies HTML responses
+- No full React SSR - just meta tag injection (faster, simpler)
+- The React app handles client-side routing after hydration

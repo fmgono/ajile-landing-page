@@ -1,34 +1,19 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import { fileURLToPath } from 'node:url'
 
 // https://vite.dev/config/
-export default defineConfig(({ isSsrBuild }) => ({
+export default defineConfig({
   plugins: [react()],
-  build: isSsrBuild
-    ? {
-        // SSR build for Cloudflare Workers
-        outDir: 'dist/client',
-        ssr: true,
-        emptyOutDir: false, // Don't delete client build files!
-        rollupOptions: {
-          input: 'src/entry-cloudflare.tsx',
-          output: {
-            // Cloudflare Pages looks for _worker.js
-            entryFileNames: '_worker.js',
-            format: 'es'
-          }
-        },
-        minify: true
+  build: {
+    rollupOptions: {
+      input: {
+        main: fileURLToPath(new URL('./index.html', import.meta.url))
       }
-    : {
-        // Client build
-        outDir: 'dist/client',
-        assetsDir: 'assets',
-        emptyOutDir: true
-      },
+    },
+    ssr: true
+  },
   ssr: {
-    // Bundle everything for Cloudflare Workers (no Node.js builtins)
-    noExternal: true,
-    target: 'webworker'
+    noExternal: ['framer-motion']
   }
-}))
+})

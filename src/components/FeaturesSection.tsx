@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export function FeaturesSection() {
   return (
-    <section className="py-32 px-4 bg-background relative overflow-hidden">
+    <section id="features" className="py-32 px-4 bg-background relative overflow-hidden">
       {/* Decor */}
       <div className="absolute top-40 right-0 w-96 h-96 bg-pastel-mint/20 rounded-full blur-3xl -z-10"></div>
       <div className="absolute bottom-20 left-0 w-72 h-72 bg-pastel-purple/20 rounded-full blur-3xl -z-10"></div>

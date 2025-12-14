@@ -48,14 +48,14 @@ export function HeroSection() {
           </p>
 
           <div className="flex flex-wrap gap-4 pt-4">
-            <button className="flex items-center gap-2 px-8 py-4 bg-primary text-white font-bold text-lg rounded-lg neobrutalism-border neobrutalism-shadow hover:translate-y-1 hover:shadow-none transition-all active:translate-y-1 active:shadow-none">
+            <a href="#download" className="flex items-center gap-2 px-8 py-4 bg-primary text-white font-bold text-lg rounded-lg neobrutalism-border neobrutalism-shadow hover:translate-y-1 hover:shadow-none transition-all active:translate-y-1 active:shadow-none">
               <Download className="w-5 h-5" />
               Download for Free
-            </button>
-            <button className="flex items-center gap-2 px-8 py-4 bg-white text-foreground font-bold text-lg rounded-lg neobrutalism-border neobrutalism-shadow hover:translate-y-1 hover:shadow-none transition-all active:translate-y-1 active:shadow-none">
+            </a>
+            <a href="#features" className="flex items-center gap-2 px-8 py-4 bg-white text-foreground font-bold text-lg rounded-lg neobrutalism-border neobrutalism-shadow hover:translate-y-1 hover:shadow-none transition-all active:translate-y-1 active:shadow-none">
               View Features
               <ArrowRight className="w-5 h-5" />
-            </button>
+            </a>
           </div>
           
           <p className="text-sm text-muted-foreground/80 font-medium">

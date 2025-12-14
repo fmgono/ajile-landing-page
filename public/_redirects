@@ -1,2 +1,5 @@
-# SPA fallback - serve index.html for all routes
-/*    /index.html   200
+# SPA fallback - but NOT for static files
+# Static files (.js, .css, etc.) are served automatically by Cloudflare
+/roadmap    /index.html   200
+/privacy    /index.html   200
+/terms      /index.html   200

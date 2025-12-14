@@ -4,6 +4,7 @@ import { HeroSection } from "./components/HeroSection";
 import { InteractiveDemo } from "./components/InteractiveDemo";
 import { KanaFeatureDemo } from "./components/KanaFeatureDemo";
 import { WordUpDemo } from "./components/WordUpDemo";
+import { DownloadSection } from "./components/DownloadSection";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <WordUpDemo />
       <KanaFeatureDemo />
       <InteractiveDemo />
+      <DownloadSection />
       <Footer />
     </div>
   );

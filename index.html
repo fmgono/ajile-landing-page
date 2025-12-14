@@ -10,6 +10,15 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
-    <script defer src="https://cloud.umami.is/script.js" data-website-id="836c002d-3bd4-4e3c-8916-2c1df1c8bf25"></script>
+    <script>
+      // Only load Umami analytics in production (not on localhost)
+      if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+        const script = document.createElement('script');
+        script.defer = true;
+        script.src = 'https://cloud.umami.is/script.js';
+        script.setAttribute('data-website-id', '836c002d-3bd4-4e3c-8916-2c1df1c8bf25');
+        document.head.appendChild(script);
+      }
+    </script>
   </body>
 </html>

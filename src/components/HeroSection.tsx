@@ -35,9 +35,6 @@ export function HeroSection() {
             transition={{ duration: 0.5 }}
             className="text-left space-y-6"
           >
-            <div className="mb-6">
-              <img src="/logo.svg" alt="Ajile Logo" className="w-16 h-16 rounded-xl neobrutalism-border neobrutalism-shadow" />
-            </div>
 
             <div className="inline-block px-4 py-1.5 bg-pastel-purple neobrutalism-border rounded-full text-sm font-bold mb-2 neobrutalism-shadow-sm transform -rotate-1">
              🚀 v1.1.0 Now Available

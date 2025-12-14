@@ -34,7 +34,7 @@ export function Navbar({ currentView, onNavigate }: NavbarProps) {
           className="flex items-center gap-2 cursor-pointer hover:opacity-80 transition-opacity"
           onClick={() => onNavigate("home")}
         >
-          <img src="/logo.svg" alt="Ajile Logo" className="w-8 h-8 rounded border border-black bg-white" />
+          <img src="/logo.svg" alt="Ajile Logo" className="w-8 h-8 rounded border border-black bg-white" width="32" height="32" style={{ display: 'block' }} />
           <span className="text-xl font-black tracking-tight">Ajile</span>
         </div>
 

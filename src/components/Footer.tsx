@@ -1,5 +1,3 @@
-import { Github, Twitter } from "lucide-react";
-
 export function Footer() {
   return (
     <footer className="py-12 px-4 bg-white border-t-2 border-black">
@@ -11,13 +9,13 @@ export function Footer() {
         
         <div className="flex items-center gap-6">
           <a href="#" className="text-muted-foreground hover:text-black transition-colors">Privacy Policy</a>
-          <a href="#" className="text-muted-foreground hover:text-black transition-colors">Terms of Service</a>
-          <a href="#" className="p-2 bg-gray-100 rounded-full hover:bg-pastel-purple transition-colors border border-black">
+          {/* <a href="#" className="text-muted-foreground hover:text-black transition-colors">Terms of Service</a> */}
+          {/* <a href="#" className="p-2 bg-gray-100 rounded-full hover:bg-pastel-purple transition-colors border border-black">
             <Twitter className="w-5 h-5" />
-          </a>
-          <a href="#" className="p-2 bg-gray-100 rounded-full hover:bg-pastel-purple transition-colors border border-black">
+          </a> */}
+          {/* <a href="#" className="p-2 bg-gray-100 rounded-full hover:bg-pastel-purple transition-colors border border-black">
             <Github className="w-5 h-5" />
-          </a>
+          </a> */}
         </div>
       </div>
     </footer>

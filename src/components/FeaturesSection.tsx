@@ -1,6 +1,4 @@
-import { Book, Brain, Sparkles, Zap, Database, Lock, Plus, Check, Search, BarChart3 } from "lucide-react";
-import { cn } from "../lib/utils";
-import { motion } from "framer-motion";
+import { Book, Brain, Sparkles, Zap, Database, Lock, Plus, Check } from "lucide-react";
 
 export function FeaturesSection() {
   return (

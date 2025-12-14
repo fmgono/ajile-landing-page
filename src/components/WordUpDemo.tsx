@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Volume2, BookOpen, Check, RotateCcw, Play, Pause, NotebookPen, AlertCircle, Image as ImageIcon, ArrowRight } from "lucide-react";
+import { BookOpen, Check, RotateCcw, Play, Pause, Image as ImageIcon, ArrowRight } from "lucide-react";
 
 // Mock Data for the demo
 const DEMO_WORDS = [

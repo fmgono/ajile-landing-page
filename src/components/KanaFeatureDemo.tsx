@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Check, CheckCircle2, RotateCcw, Trophy, ArrowRight, XCircle, GraduationCap, Dumbbell, Layers, Grid, PlayCircle, Star, Sparkles, Volume2, HelpCircle } from "lucide-react";
+import { Check, CheckCircle2, RotateCcw, Trophy, ArrowRight, XCircle, GraduationCap, Dumbbell, Layers, Grid, PlayCircle, Star, Sparkles, HelpCircle } from "lucide-react";
 import ConfettiGenerator from "confetti-js";
 
 // Types

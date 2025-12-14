@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Plus, Volume2, ArrowRight, BookOpen, Image as ImageIcon, Loader2, Check } from "lucide-react";
+import { Plus, Volume2, BookOpen, Check } from "lucide-react";
 
 // Types for our mock data
 interface MockWord {

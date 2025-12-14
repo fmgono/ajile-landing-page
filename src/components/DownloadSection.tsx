@@ -3,21 +3,21 @@ import { Download, Apple, Monitor, Terminal, Box, ChevronDown } from "lucide-rea
 import { useState, useRef, useEffect } from "react";
 
 export function DownloadSection() {
-  const version = "v1.1.0";
-  const baseUrl = `https://github.com/fmgono/ajale-desktop/releases/download/${version}`;
+  const version = "v1.1";
+  const baseUrl = `https://github.com/fmgono/ajile/releases/download/${version}`;
 
   const downloads = {
     mac: [
-      { name: "macOS Universal (.dmg)", file: "Ajile_Desktop_1.1.0_universal.dmg", primary: true },
-      // { name: "macOS Intel (.dmg)", file: "Ajile_Desktop_1.1.0_x64.dmg" },
-      // { name: "macOS Silicon (.dmg)", file: "Ajile_Desktop_1.1.0_aarch64.dmg" },
+      { name: "macOS Universal (.dmg)", file: "Ajile.Desktop_1.1.0_universal.dmg", primary: true },
+      // { name: "macOS Intel (.dmg)", file: "Ajile.Desktop_1.1.0_x64.dmg" },
+      // { name: "macOS Silicon (.dmg)", file: "Ajile.Desktop_1.1.0_aarch64.dmg" },
     ],
     windows: [
-      { name: "Windows Installer (.exe)", file: "Ajile_Desktop_1.1.0_x64-setup.exe", primary: true },
+      { name: "Windows Installer (.exe)", file: "Ajile.Desktop_1.1.0_x64-setup.exe", primary: true },
     ],
     linux: [
-      { name: "Linux Debian (.deb)", file: "ajile-desktop_1.1.0_amd64.deb", primary: true },
-      { name: "Linux AppImage", file: "ajile-desktop_1.1.0_amd64.AppImage" },
+      { name: "Linux Debian (.deb)", file: "Ajile.Desktop_1.1.0_amd64.deb", primary: true },
+      { name: "Linux AppImage", file: "Ajile.Desktop_1.1.0_amd64.AppImage" },
     ]
   };
 

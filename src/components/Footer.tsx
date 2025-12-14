@@ -1,5 +1,7 @@
+import type { View } from "../App";
+
 interface FooterProps {
-  onNavigate?: (view: "home" | "roadmap") => void;
+  onNavigate?: (view: View) => void;
 }
 
 export function Footer({ onNavigate }: FooterProps) {
@@ -16,14 +18,21 @@ export function Footer({ onNavigate }: FooterProps) {
         
         <div className="flex items-center gap-6">
           {onNavigate && (
-            <button 
-              onClick={() => onNavigate("roadmap")}
-              className="text-muted-foreground hover:text-black transition-colors"
-            >
-              Roadmap
-            </button>
+            <>
+              <button 
+                onClick={() => onNavigate("roadmap")}
+                className="text-muted-foreground hover:text-black transition-colors"
+              >
+                Roadmap
+              </button>
+              <button 
+                onClick={() => onNavigate("privacy")}
+                className="text-muted-foreground hover:text-black transition-colors"
+              >
+                Privacy Policy
+              </button>
+            </>
           )}
-          <a href="#" className="text-muted-foreground hover:text-black transition-colors">Privacy Policy</a>
         </div>
       </div>
     </footer>

@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { Menu, X, Github } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import type { View } from "../App";
 
 interface NavbarProps {
-  currentView: "home" | "roadmap";
-  onNavigate: (view: "home" | "roadmap") => void;
+  currentView: View;
+  onNavigate: (view: View) => void;
 }
 
 export function Navbar({ currentView, onNavigate }: NavbarProps) {
@@ -101,6 +102,15 @@ export function Navbar({ currentView, onNavigate }: NavbarProps) {
                 className={`text-left font-bold py-2 ${currentView === "roadmap" ? "text-primary" : "text-muted-foreground hover:text-black"}`}
               >
                 Roadmap
+              </button>
+              <button 
+                onClick={() => {
+                  onNavigate("privacy");
+                  setIsMobileMenuOpen(false);
+                }}
+                className={`text-left font-bold py-2 ${currentView === "privacy" ? "text-primary" : "text-muted-foreground hover:text-black"}`}
+              >
+                Privacy Policy
               </button>
               <a 
                 href="https://github.com/fmgono/ajile"

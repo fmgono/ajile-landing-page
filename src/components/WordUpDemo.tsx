@@ -74,7 +74,7 @@ export function WordUpDemo() {
   };
 
   return (
-    <section className="py-24 px-4 bg-pastel-bg overflow-hidden">
+    <section className="py-24 px-4 bg-pastel-bg overflow-hidden border-b-2 border-black">
       <div className="container max-w-6xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
         
         {/* Interactive Demo Area (Left Side for variation) */}

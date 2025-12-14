@@ -26,7 +26,7 @@ export function HeroSection() {
   };
 
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center bg-pastel-bg px-4 py-20 overflow-hidden">
+    <section className="relative min-h-screen flex flex-col items-center justify-center bg-pastel-bg px-4 py-20 overflow-hidden border-b-2 border-black">
       <div className="container max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center relative z-10">
         
         <motion.div 

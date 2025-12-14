@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export function FeaturesSection() {
   return (
-    <section id="features" className="py-32 px-4 bg-background relative overflow-hidden">
+    <section id="features" className="py-32 px-4 bg-background relative overflow-hidden border-b-2 border-black">
       {/* Decor */}
       <div className="absolute top-40 right-0 w-96 h-96 bg-pastel-mint/20 rounded-full blur-3xl -z-10"></div>
       <div className="absolute bottom-20 left-0 w-72 h-72 bg-pastel-purple/20 rounded-full blur-3xl -z-10"></div>
@@ -138,7 +138,7 @@ export function FeaturesSection() {
                   <p className="text-lg text-muted-foreground">
                     One-click card creation. We grab the sentence, audio, and image for you automatically.
                   </p>
-                  <div className="mt-6 inline-flex items-center gap-2 px-4 py-2 bg-white border-2 border-black rounded-full text-sm font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                  <div className="mt-6 inline-flex items-center gap-2 px-4 py-2 bg-white border-2 border-black rounded-lg text-sm font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
                      <Plus className="w-4 h-4" />
                      <span>Add to Anki Deck</span>
                   </div>
@@ -205,7 +205,7 @@ export function FeaturesSection() {
           <div className="col-span-1 md:col-span-6 group">
             <div className="h-full p-8 rounded-2xl bg-pastel-pink/30 border-2 border-black neobrutalism-shadow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all duration-300 relative overflow-hidden flex flex-col justify-center items-center text-center">
               <div className="relative z-10">
-                 <div className="w-16 h-16 bg-white border-2 border-black rounded-full flex items-center justify-center mb-6 mx-auto shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] group-hover:scale-110 transition-transform duration-300">
+                 <div className="w-16 h-16 bg-white border-2 border-black rounded-lg flex items-center justify-center mb-6 mx-auto shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] group-hover:scale-110 transition-transform duration-300">
                    <Lock className="w-8 h-8" />
                  </div>
                  <h3 className="text-3xl font-bold mb-3">Privacy First & Local</h3>

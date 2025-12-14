@@ -90,7 +90,7 @@ export function KanaFeatureDemo() {
   };
 
   return (
-    <section className="py-24 px-4 bg-white overflow-hidden border-y-2 border-black">
+    <section className="py-24 px-4 bg-white overflow-hidden border-b-2 border-black">
       <div className="container max-w-6xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
         
         {/* Text Content */}

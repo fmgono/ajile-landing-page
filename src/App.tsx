@@ -58,7 +58,7 @@ function App({ initialView }: AppProps = {}) {
   }, []);
 
   return (
-    <div className="min-h-screen font-sans text-foreground bg-background selection:bg-pastel-purple selection:text-black pt-16" suppressHydrationWarning>
+    <div className="min-h-screen font-sans text-foreground bg-background selection:bg-pastel-purple selection:text-black pt-16">
       <Navbar currentView={currentView} onNavigate={handleNavigate} />
       
       {currentView === "home" && (

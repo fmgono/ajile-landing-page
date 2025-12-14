@@ -1,11 +1,9 @@
 import { StrictMode } from 'react'
-import { hydrateRoot } from 'react-dom/client'
+import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.tsx'
 
-const root = document.getElementById('root')!
-
-// Get initial view from URL to match SSR
+// Get initial view from URL
 const getInitialView = () => {
   const path = window.location.pathname
   if (path === '/') return 'home'
@@ -15,15 +13,8 @@ const getInitialView = () => {
   return 'home'
 }
 
-// Hydrate instead of render for SSR
-hydrateRoot(
-  root,
+createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <App initialView={getInitialView()} />
   </StrictMode>
 )
-
-// Mark body as hydrated (fallback if script in HTML didn't run)
-if (typeof document !== 'undefined') {
-  document.body.classList.add('hydrated')
-}

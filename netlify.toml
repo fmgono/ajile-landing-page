@@ -1,0 +1,25 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# Specific routes - serve pre-rendered HTML with correct meta tags
+[[redirects]]
+  from = "/roadmap"
+  to = "/roadmap/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/privacy"
+  to = "/privacy/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/terms"
+  to = "/terms/index.html"
+  status = 200
+
+# SPA fallback for any other routes
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

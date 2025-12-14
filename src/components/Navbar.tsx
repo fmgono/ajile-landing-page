@@ -52,7 +52,7 @@ export function Navbar({ currentView, onNavigate }: NavbarProps) {
           >
             Roadmap
           </button>
-          <a 
+          {/* <a 
             href="https://github.com/fmgono/ajile" 
             target="_blank" 
             rel="noopener noreferrer"
@@ -60,7 +60,7 @@ export function Navbar({ currentView, onNavigate }: NavbarProps) {
           >
             <Github className="w-4 h-4" />
             GitHub
-          </a>
+          </a> */}
           <button 
             onClick={() => scrollToSection("download")}
             className="px-4 py-2 bg-pastel-purple text-black font-bold text-sm rounded-lg border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all active:translate-y-0 active:shadow-none"
@@ -111,6 +111,15 @@ export function Navbar({ currentView, onNavigate }: NavbarProps) {
                 className={`text-left font-bold py-2 ${currentView === "privacy" ? "text-primary" : "text-muted-foreground hover:text-black"}`}
               >
                 Privacy Policy
+              </button>
+              <button 
+                onClick={() => {
+                  onNavigate("terms");
+                  setIsMobileMenuOpen(false);
+                }}
+                className={`text-left font-bold py-2 ${currentView === "terms" ? "text-primary" : "text-muted-foreground hover:text-black"}`}
+              >
+                Terms of Service
               </button>
               <a 
                 href="https://github.com/fmgono/ajile"

@@ -1,8 +1,13 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { Download, Apple, Monitor, Terminal, Box, ChevronDown } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
+import type { View } from "../App";
 
-export function DownloadSection() {
+interface DownloadSectionProps {
+  onNavigate?: (view: View) => void;
+}
+
+export function DownloadSection({ onNavigate }: DownloadSectionProps = {}) {
   const version = "v1.1";
   const baseUrl = `https://github.com/fmgono/ajile/releases/download/${version}`;
 
@@ -82,8 +87,34 @@ export function DownloadSection() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.4 }}
-          className="mt-12 text-center"
+          className="mt-12 text-center space-y-4"
         >
+          <p className="text-sm text-muted-foreground max-w-2xl mx-auto">
+            By downloading Ajile, you acknowledge that you have read and agree <br/> to our {" "}
+            {onNavigate ? (
+              <>
+                <button 
+                  onClick={() => onNavigate("privacy")}
+                  className="text-primary font-bold hover:underline"
+                >
+                  Privacy Policy
+                </button>{" "}
+                and{" "}
+                <button 
+                  onClick={() => onNavigate("terms")}
+                  className="text-primary font-bold hover:underline"
+                >
+                  Terms of Service
+                </button>
+              </>
+            ) : (
+              <>
+                <span className="text-primary font-bold">Privacy Policy</span> and{" "}
+                <span className="text-primary font-bold">Terms of Service</span>
+              </>
+            )}
+            .
+          </p>
           <a 
             href="https://github.com/fmgono/ajile/releases" 
             target="_blank" 

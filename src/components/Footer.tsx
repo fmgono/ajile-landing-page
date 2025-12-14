@@ -16,7 +16,7 @@ export function Footer({ onNavigate }: FooterProps) {
           </div>
         </div>
         
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-6 flex-wrap justify-center">
           {onNavigate && (
             <>
               <button 
@@ -29,7 +29,13 @@ export function Footer({ onNavigate }: FooterProps) {
                 onClick={() => onNavigate("privacy")}
                 className="text-muted-foreground hover:text-black transition-colors"
               >
-                Privacy Policy
+                Privacy
+              </button>
+              <button 
+                onClick={() => onNavigate("terms")}
+                className="text-muted-foreground hover:text-black transition-colors"
+              >
+                Terms
               </button>
             </>
           )}

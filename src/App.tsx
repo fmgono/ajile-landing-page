@@ -9,8 +9,9 @@ import { DownloadSection } from "./components/DownloadSection";
 import { Navbar } from "./components/Navbar";
 import { RoadmapPage } from "./components/RoadmapPage";
 import { PrivacyPage } from "./components/PrivacyPage";
+import { TermsPage } from "./components/TermsPage";
 
-export type View = "home" | "roadmap" | "privacy";
+export type View = "home" | "roadmap" | "privacy" | "terms";
 
 function App() {
   const [currentView, setCurrentView] = useState<View>("home");
@@ -31,13 +32,15 @@ function App() {
           <WordUpDemo />
           <KanaFeatureDemo />
           <InteractiveDemo />
-          <DownloadSection />
+          <DownloadSection onNavigate={setCurrentView} />
         </>
       )}
 
       {currentView === "roadmap" && <RoadmapPage />}
       
       {currentView === "privacy" && <PrivacyPage />}
+
+      {currentView === "terms" && <TermsPage />}
       
       <Footer onNavigate={setCurrentView} />
     </div>

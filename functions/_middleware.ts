@@ -1,33 +1,29 @@
-// Middleware to handle SSR for HTML routes
-// Static assets are automatically served by Cloudflare Pages
-
-import { renderToString } from 'react-dom/server'
-import { createElement } from 'react'
+// Cloudflare Pages Middleware for dynamic meta tags
+// This intercepts HTML responses and injects Open Graph tags
 
 type View = 'home' | 'roadmap' | 'privacy' | 'terms'
 
-export async function onRequest(context: {
-  request: Request
-  next: () => Promise<Response>
-  env: any
-}) {
+export const onRequest: PagesFunction = async (context) => {
   const url = new URL(context.request.url)
   const pathname = url.pathname
 
-  // Let static assets pass through
+  // Check if this is a static asset - let it pass through unchanged
   if (
     pathname.startsWith('/assets/') ||
-    pathname.endsWith('.js') ||
-    pathname.endsWith('.css') ||
-    pathname.endsWith('.svg') ||
-    pathname.endsWith('.png') ||
-    pathname.endsWith('.ico') ||
-    pathname.endsWith('.json')
+    pathname.match(/\.(js|css|svg|png|ico|json|txt|xml|woff|woff2|ttf|eot|map)$/)
   ) {
     return context.next()
   }
 
-  // Handle HTML routes with SSR
+  // For HTML routes, get the response first
+  const response = await context.next()
+  
+  // Only modify HTML responses
+  const contentType = response.headers.get('content-type') || ''
+  if (!contentType.includes('text/html')) {
+    return response
+  }
+
   try {
     // Determine view from path
     const view: View = pathname === '/' ? 'home' : 
@@ -35,40 +31,27 @@ export async function onRequest(context: {
                        pathname.startsWith('/privacy') ? 'privacy' :
                        pathname.startsWith('/terms') ? 'terms' : 'home'
 
-    // Fetch the static HTML template
-    const templateResponse = await context.next()
+    let html = await response.text()
     
-    // If it's not found or error, try to serve index.html
-    if (!templateResponse.ok) {
-      const indexResponse = await context.env.ASSETS.fetch(new URL('/index.html', url.origin))
-      if (!indexResponse.ok) {
-        return new Response('Not found', { status: 404 })
-      }
-    }
-
-    let template = await templateResponse.text()
-    
-    // Generate dynamic meta tags
+    // Generate and inject dynamic meta tags
     const metaTags = generateMetaTags(view, pathname)
-    
-    // Inject meta tags
-    const html = template.replace('<!--app-head-->', metaTags)
+    html = html.replace('<!--app-head-->', metaTags)
 
     return new Response(html, {
+      status: 200,
       headers: {
         'Content-Type': 'text/html; charset=utf-8',
         'Cache-Control': 'public, max-age=0, must-revalidate'
       }
     })
-  } catch (error: any) {
-    console.error('SSR Error:', error)
-    // Fallback to static file
-    return context.next()
+  } catch (error) {
+    console.error('Middleware Error:', error)
+    return response
   }
 }
 
 function generateMetaTags(view: View, pathname: string): string {
-  const baseUrl = 'https://ajile.fmgono.dev'
+  const baseUrl = 'https://ajile.pages.dev'
   const fullUrl = `${baseUrl}${pathname === '/' ? '' : pathname}`
   
   const pages: Record<View, { title: string; description: string }> = {

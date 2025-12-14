@@ -138,47 +138,55 @@ function DownloadCard({ title, icon, color, items, baseUrl, delay }: {
       <h3 className="text-2xl font-black mb-2">{title}</h3>
       <p className="text-sm text-muted-foreground font-bold mb-6">Latest: v1.1.0</p>
 
-      <div className="w-full space-y-3 mt-auto">
-        <a 
-          href={`${baseUrl}/${primaryItem.file}`}
-          className={`w-full flex items-center justify-center gap-2 py-3 px-4 ${color} text-black font-bold rounded-lg neobrutalism-border hover:brightness-105 active:translate-y-0.5 transition-all`}
-        >
-          <Download className="w-4 h-4" />
-          Download {items.length > 1 ? "Latest" : ""}
-        </a>
+      <div className="w-full mt-auto">
+        {otherItems.length > 0 ? (
+          <div className="relative w-full flex rounded-lg neobrutalism-border hover:brightness-105 transition-all" ref={dropdownRef}>
+            <a 
+              href={`${baseUrl}/${primaryItem.file}`}
+              className={`flex-1 flex items-center justify-center gap-2 py-3 px-4 ${color} text-black font-bold rounded-l-md border-r-2 border-black hover:bg-opacity-90 transition-colors`}
+            >
+              <Download className="w-4 h-4" />
+              Download
+            </a>
+            
+            <button 
+              onClick={() => setIsOpen(!isOpen)}
+              className={`px-3 py-3 ${color} text-black font-bold rounded-r-md hover:bg-opacity-90 transition-colors flex items-center justify-center`}
+            >
+               <ChevronDown className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+            </button>
 
-        {otherItems.length > 0 && (
-          <div className="relative" ref={dropdownRef}>
-             <button 
-                onClick={() => setIsOpen(!isOpen)}
-                className="w-full flex items-center justify-center gap-2 py-2 px-4 bg-transparent border-2 border-transparent hover:border-black/10 text-sm font-bold text-muted-foreground rounded-lg transition-all"
-             >
-                Other Versions <ChevronDown className={`w-3 h-3 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
-             </button>
-
-             <AnimatePresence>
-                {isOpen && (
-                  <motion.div 
-                    initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                    transition={{ duration: 0.1 }}
-                    className="absolute top-full left-0 right-0 mt-2 bg-white rounded-lg neobrutalism-border neobrutalism-shadow p-2 z-50 text-left"
-                  >
-                    {otherItems.map((item, i) => (
-                      <a 
-                        key={i}
-                        href={`${baseUrl}/${item.file}`}
-                        className="flex items-center gap-2 w-full p-2 text-sm font-bold hover:bg-pastel-bg rounded cursor-pointer transition-colors text-foreground"
-                      >
-                        <Download className="w-3 h-3" />
-                        {item.name}
-                      </a>
-                    ))}
-                  </motion.div>
-                )}
-             </AnimatePresence>
+            <AnimatePresence>
+               {isOpen && (
+                 <motion.div 
+                   initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                   animate={{ opacity: 1, y: 0, scale: 1 }}
+                   exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                   transition={{ duration: 0.1 }}
+                   className="absolute top-full left-0 right-0 mt-2 bg-white rounded-lg neobrutalism-border neobrutalism-shadow p-2 z-50 text-left min-w-[200px]"
+                 >
+                   {otherItems.map((item, i) => (
+                     <a 
+                       key={i}
+                       href={`${baseUrl}/${item.file}`}
+                       className="flex items-center gap-2 w-full p-2 text-sm font-bold hover:bg-pastel-bg rounded cursor-pointer transition-colors text-foreground"
+                     >
+                       <Download className="w-3 h-3" />
+                       {item.name}
+                     </a>
+                   ))}
+                 </motion.div>
+               )}
+            </AnimatePresence>
           </div>
+        ) : (
+          <a 
+            href={`${baseUrl}/${primaryItem.file}`}
+            className={`w-full flex items-center justify-center gap-2 py-3 px-4 ${color} text-black font-bold rounded-lg neobrutalism-border hover:brightness-105 active:translate-y-0.5 transition-all`}
+          >
+            <Download className="w-4 h-4" />
+            Download
+          </a>
         )}
       </div>
     </motion.div>

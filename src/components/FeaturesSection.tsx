@@ -17,7 +17,7 @@ export function FeaturesSection() {
             </span>
           </h2>
           <p className="text-xl md:text-2xl text-muted-foreground font-medium leading-relaxed">
-            Designed by learners, for learners. We fixed the frustrations of existing tools so you can focus on immersion.
+            I built this because I was frustrated with existing tools. Every feature here solves a real problem I faced while learning Japanese. No fluff, just what actually works.
           </p>
         </div>
 
@@ -33,7 +33,7 @@ export function FeaturesSection() {
                   </div>
                   <h3 className="text-3xl font-bold mb-2">Contextual Dictionary</h3>
                   <p className="text-lg text-muted-foreground max-w-md">
-                    Don't just see definitions. See how words are used in real sentences from your own immersion content.
+                    I got tired of seeing definitions without context. So I built a dictionary that shows you how words actually appear in real sentences—the ones you're reading right now.
                   </p>
                 </div>
                 
@@ -66,7 +66,7 @@ export function FeaturesSection() {
                 </div>
                 <h3 className="text-2xl font-bold mb-2">Smart SRS</h3>
                 <p className="text-muted-foreground">
-                  Spaced Repetition that prioritizes what you actually need to learn right now.
+                  I made the SRS focus on what you actually need right now, not what some algorithm thinks you should review. It learns from how you learn.
                 </p>
               </div>
               
@@ -96,7 +96,7 @@ export function FeaturesSection() {
                 </div>
                 <h3 className="text-2xl font-bold mb-2">Auto Furigana</h3>
                 <p className="text-muted-foreground">
-                  Instantly add reading aids to any Japanese text.
+                  Reading Japanese text used to slow me down. Now I can instantly see readings above any kanji—no more stopping to look things up mid-sentence.
                 </p>
               </div>
 
@@ -134,7 +134,7 @@ export function FeaturesSection() {
                   </div>
                   <h3 className="text-3xl font-bold mb-2">Instant Sentence Mining</h3>
                   <p className="text-lg text-muted-foreground">
-                    One-click card creation. We grab the sentence, audio, and image for you automatically.
+                    Creating Anki cards used to take forever. I automated it—one click and you get the sentence, audio, and image. Back to reading in seconds.
                   </p>
                   <div className="mt-6 inline-flex items-center gap-2 px-4 py-2 bg-white border-2 border-black rounded-lg text-sm font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
                      <Plus className="w-4 h-4" />
@@ -175,7 +175,7 @@ export function FeaturesSection() {
                    </div>
                    <h3 className="text-2xl font-bold mb-2">Instant Lookups</h3>
                    <p className="text-muted-foreground">
-                     Hover over any word to get definitions, pitch accents, and conjugation info immediately.
+                     I hate breaking my reading flow. Hover over any word and get everything you need—definitions, pitch accents, conjugations—right there.
                    </p>
                 </div>
                 
@@ -208,7 +208,7 @@ export function FeaturesSection() {
                  </div>
                  <h3 className="text-3xl font-bold mb-3">Privacy First & Local</h3>
                  <p className="text-lg text-muted-foreground max-w-md mx-auto">
-                   Your learning data is yours. Ajile runs locally on your machine. No clouds, no tracking, no monthly fees.
+                   Your data belongs to you, period. Everything runs on your machine. No cloud sync, no tracking, no monthly fees. I built it this way because that's how I'd want it.
                  </p>
                  <div className="mt-6 flex justify-center gap-4 opacity-60">
                     <div className="flex items-center gap-1 text-xs font-bold uppercase"><Check className="w-4 h-4" /> Offline Ready</div>

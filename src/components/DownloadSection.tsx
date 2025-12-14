@@ -32,7 +32,7 @@ export function DownloadSection() {
             viewport={{ once: true }}
             className="text-4xl md:text-5xl font-black text-foreground"
           >
-            Start Your Journey <span className="bg-pastel-peach px-2 neobrutalism-border inline-block transform -rotate-1">Today</span>
+            Ready to dive in? <span className="bg-pastel-peach px-2 neobrutalism-border inline-block transform -rotate-1">Let's go!</span>
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -41,7 +41,7 @@ export function DownloadSection() {
             transition={{ delay: 0.1 }}
             className="text-xl text-muted-foreground font-medium max-w-2xl mx-auto"
           >
-            Download Ajile for your preferred platform. It's free, open-source, and privacy-focused.
+            Pick your platform and download. It's completely free and runs entirely on your machine. No sign-ups, no strings attached.
           </motion.p>
         </div>
 

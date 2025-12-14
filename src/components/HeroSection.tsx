@@ -44,11 +44,11 @@ export function HeroSection() {
           </div>
           
           <h1 className="text-5xl md:text-7xl font-black leading-tight tracking-tight text-foreground">
-            Japanese Immersion, <span className="bg-pastel-mint px-2 neobrutalism-border inline-block transform rotate-1">Supercharged.</span>
+            The Japanese learning app <span className="bg-pastel-mint px-2 neobrutalism-border inline-block transform rotate-1">I wish I had.</span>
           </h1>
           
           <p className="text-xl text-muted-foreground font-medium max-w-lg">
-            Stop switching between twelve different apps. Ajile combines a powerful dictionary, context-aware SRS, and sentence mining into one fast, local-first desktop app.
+            I was tired of juggling apps, so I built one that does it all. Dictionary, SRS, and sentence mining—running fast and local on your machine. No subscriptions, no tracking.
           </p>
 
           <div className="flex flex-wrap gap-4 pt-4">
@@ -63,7 +63,7 @@ export function HeroSection() {
           </div>
           
           <p className="text-sm text-muted-foreground/80 font-medium">
-            * Available for macOS, Windows, and Linux.
+            * Built with love for macOS, Windows, and Linux. Completely free and runs entirely on your machine.
           </p>
         </motion.div>
 

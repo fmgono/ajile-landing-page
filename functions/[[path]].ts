@@ -10,28 +10,45 @@ export async function onRequest(context: {
     // Import the render function dynamically
     const { render } = await import('../dist/server/entry-server.js')
     
-    // Get the HTML template from the static assets
-    // In Cloudflare Pages, we need to fetch it from the request URL
+    // Get the HTML template - try fetching from static assets first
     const baseUrl = new URL(context.request.url).origin
-    const templateResponse = await fetch(`${baseUrl}/index.html`)
-    
-    // If template fetch fails, use a fallback
     let template: string
-    if (templateResponse.ok) {
-      template = await templateResponse.text()
-    } else {
-      // Fallback template if index.html isn't available
+    
+    try {
+      const templateResponse = await fetch(`${baseUrl}/index.html`)
+      if (templateResponse.ok) {
+        template = await templateResponse.text()
+      } else {
+        throw new Error('Template fetch failed')
+      }
+    } catch {
+      // Fallback template matching index.html structure
       template = `<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/32x32.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Prevent FOUC -->
+    <style>
+      body { visibility: hidden; }
+      body.hydrated { visibility: visible; }
+    </style>
     <!--app-head-->
   </head>
   <body>
     <div id="root"><!--app-html--></div>
     <script type="module" src="/src/main.tsx"></script>
+    <script>
+      document.body.classList.add('hydrated');
+      if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+        const script = document.createElement('script');
+        script.defer = true;
+        script.src = 'https://cloud.umami.is/script.js';
+        script.setAttribute('data-website-id', '836c002d-3bd4-4e3c-8916-2c1df1c8bf25');
+        document.head.appendChild(script);
+      }
+    </script>
   </body>
 </html>`
     }

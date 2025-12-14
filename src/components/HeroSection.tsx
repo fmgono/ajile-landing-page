@@ -29,13 +29,17 @@ export function HeroSection() {
     <section className="relative min-h-screen flex flex-col items-center justify-center bg-pastel-bg px-4 py-20 overflow-hidden border-b-2 border-black">
       <div className="container max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center relative z-10">
         
-        <motion.div 
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-left space-y-6"
-        >
-          <div className="inline-block px-4 py-1.5 bg-pastel-purple neobrutalism-border rounded-full text-sm font-bold mb-2 neobrutalism-shadow-sm transform -rotate-1">
+          <motion.div 
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-left space-y-6"
+          >
+            <div className="mb-6">
+              <img src="/logo.svg" alt="Ajile Logo" className="w-16 h-16 rounded-xl neobrutalism-border neobrutalism-shadow" />
+            </div>
+
+            <div className="inline-block px-4 py-1.5 bg-pastel-purple neobrutalism-border rounded-full text-sm font-bold mb-2 neobrutalism-shadow-sm transform -rotate-1">
              🚀 v1.1.0 Now Available
           </div>
           
@@ -84,9 +88,12 @@ export function HeroSection() {
                 {/* Left Sidebar */}
                 <div className="w-1/4 flex flex-col gap-2">
                    {/* Logo Card */}
-                   <div className="bg-[#8B80F9] border-2 border-black neobrutalism-shadow-sm rounded-lg p-3 text-white">
-                      <div className="text-sm font-black">Ajile Desktop</div>
-                      <div className="text-[8px] opacity-80">Japanese Immersive Learning</div>
+                   <div className="bg-[#8B80F9] border-2 border-black neobrutalism-shadow-sm rounded-lg p-3 text-white flex items-center gap-2">
+                      <img src="/logo.svg" alt="Logo" className="w-8 h-8 rounded border border-black bg-white" />
+                      <div>
+                        <div className="text-sm font-black">Ajile</div>
+                        <div className="text-[8px] opacity-80 leading-tight">Desktop App</div>
+                      </div>
                    </div>
                    
                    {/* Nav Buttons */}

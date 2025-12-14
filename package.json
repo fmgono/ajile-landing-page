@@ -5,9 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "node server.js",
-    "build": "tsc -b && vite build --outDir dist/client && vite build --ssr src/entry-server.tsx --outDir dist/server",
+    "build": "tsc -b && vite build --outDir dist/client && vite build --ssr src/entry-cloudflare.tsx --outDir dist/client",
+    "build:local": "tsc -b && vite build --outDir dist/client && vite build --ssr src/entry-server.tsx --outDir dist/server",
     "lint": "eslint .",
-    "preview": "NODE_ENV=production node server.js"
+    "preview": "NODE_ENV=production node server.js",
+    "pages:dev": "npm run build && wrangler pages dev dist/client --compatibility-date=2024-01-01",
+    "pages:deploy": "npm run build && wrangler pages deploy dist/client"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",
@@ -23,6 +26,7 @@
     "tailwind-merge": "^3.4.0"
   },
   "devDependencies": {
+    "@cloudflare/workers-types": "^4.20241205.0",
     "@eslint/js": "^9.39.1",
     "@types/compression": "^1.7.5",
     "@types/express": "^4.17.21",
@@ -40,6 +44,7 @@
     "tailwindcss-animate": "^1.0.7",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.46.4",
-    "vite": "^7.2.4"
+    "vite": "^7.2.4",
+    "wrangler": "^3.99.0"
   }
 }

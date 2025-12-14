@@ -96,3 +96,4 @@ export function TermsPage() {
     </section>
   );
 }
+
